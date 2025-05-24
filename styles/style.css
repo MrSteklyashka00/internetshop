@@ -7,8 +7,8 @@ h1, h2{
     text-align: center;
 }
 p{
-    font-size:20px;
-    text-indent: 10px;
+     font-size:20px;
+    text-indent: 10px; 
     color:rgba(44, 0, 126, 0.815);
 }
 
@@ -335,6 +335,7 @@ width: 300px;
 }
 
 .product_card{
+    display: none;
     width: 250px;   
     height: 400px;
     border: #000 1px solid;
@@ -400,7 +401,7 @@ width: 300px;
     /* transform: translate(2px, 2px); */
     /*transform: rotate(12deg);*/
     /* transform: rotateY(45deg); */
-      transform: rotate3d(1,1,0,45deg);  
+       /* transform: rotate3d(1,1,0,45deg);   */
     /* transform: skew(15deg,-45deg); */
 }
 
@@ -421,12 +422,12 @@ width: 300px;
 } */
 
 
-@keyframes myanim{
+/* @keyframes myanim{
    0%{
          background-color: rgb(165, 165, 165);
          color:#000;
-         transform: scale(1);
-         transform: rotate3d(1,1,0,0deg); 
+          transform: scale(1);
+         transform: rotate3d(1,1,0,0deg);  
     }
 
     50%{
@@ -439,8 +440,8 @@ width: 300px;
     100%{
         background-color:#000 ;
     color:#fff;
-    transform: scale(1.05);
-    transform: rotate3d(1,1,0,45deg);
+     transform: scale(1.05);
+    transform: rotate3d(1,1,0,45deg); 
     }
     
-}
+} */

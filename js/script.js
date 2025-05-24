@@ -36,13 +36,13 @@ for(let i=1; i <=10; i++){
 }
 
 for(let i=0; i<m.length; i++){
-    console.log(i+"[m]"+m[i]);//0: 10- сейчас. Сделать m[0]=10
+    console.log("m["+ i + "]="+ m[i] );//0: 10- сейчас. Сделать m[0]=10
 }
 
-let i=0;//ДЗ сделать что бы цикал работал на оборот
-while (i<=10){
+let i=10;//ДЗ сделать что бы цикал работал на оборот от 10 до 0
+while (i>=0){
     console.log(i*i);
-    i+=2;
+    i--;
 }
 
 i=0;
@@ -62,6 +62,81 @@ while(2*2==4){ //бесклнечный цикл (условие всегда и
     console.log('ОК');
  }
     else{
-        console.log("не равно");
+        print("не равно");
+    }
+
+    function print2(){
+        console.log("Кнопка нажата");
     }
  
+        function print(text){
+        console.log(text);
+    }
+
+function sum(a,b){
+    return a+b;
+}
+
+let sm=sum(5,2)+ sum(10,3) - sum(1,1);
+print(sm);
+
+//n! =1*2*3....*n
+//s! = 1*2*3*4*5
+
+function fact(n){//функция которая вычисляет факториал числа
+    let res=1;
+    for(let x=1; x<=n; x++){
+        res *=x //res = res * x
+    }
+    return res;
+}
+
+print(fact(100));
+
+//DOM-дерево
+
+//находим элемаент с id product_name и сохраняем его в перемунную element
+let element = document.getElementById('product_name');
+element.innerHTML=" другой телевизор";
+
+let count=0;
+function createNewcard(){
+    let main = document.getElementById('main');
+        let card = document.getElementById('card');
+        let newCard= card.cloneNode(true);//клонируем объект (карточку товара)
+        newCard.id='card_'+count++;//card_15
+        main.append(newCard);
+}
+
+
+
+let product={ 
+    'name':"Монитор &laquo;ZALMAN&raquo;",
+    'desc': "Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, repudiandae debitis!",
+    'price':'3000',
+    'path':"samsung_F8500.webp",
+    'id':0,
+
+}
+print(product);
+
+
+
+function createCard(name,desc,price,img,id){
+        let main = document.getElementById('main');
+        let card = document.getElementById('card');
+        let newCard= card.cloneNode(true);
+        newCard.style.display='block';
+        newCard.childNodes[1].style.background="url(./img/"+ img+") center /cover  no-repeat";
+        newCard.childNodes[3].innerHTML=name;
+        newCard.childNodes[5].innerHTML=desc;
+        newCard.childNodes[7].innerHTML='<b>Цена: <b>' + price +' р.';
+
+       main.append(newCard);
+}
+
+createCard(product.name, product.desc, product.price, product.path, product.id);
+createCard('монитор &laquo;rock&raquo;','Какое то описание', 5000 ,'samsung_F8500.webp',0);
+
+for(let i=1; i<=10; i++)
+    createCard('монитор &laquo;msi&raquo;№'+ i,'Какое то описание', 15000 ,'samsung_F8500.webp',0);
