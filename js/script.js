@@ -113,8 +113,8 @@ function createNewcard(){
 let product={ 
     'name':"Монитор &laquo;ZALMAN&raquo;",
     'desc': "Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, repudiandae debitis!",
-    'price':'3000',
-    'path':"samsung_F8500.webp",
+    'price':'30000',
+    'path':"addd.webp",
     'id':0,
 
 }
@@ -136,7 +136,8 @@ function createCard(name,desc,price,img,id){
 }
 
 createCard(product.name, product.desc, product.price, product.path, product.id);
-createCard('монитор &laquo;rock&raquo;','Какое то описание', 5000 ,'samsung_F8500.webp',0);
-
+createCard('Монитор &laquo;samsung&raquo;','Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ducimus dignissimos vitae animi tenetur similique praesentium, nisi libero. Deleniti, nihil.', 15000 ,'samsung_F8500.webp',0);
+createCard('Монитор &laquo;msi&raquo;№'+ i,'Монитор MSI PRO MP273A оборудован 27-дюймовым экраном IPS FullHD с безрамочным дизайном. Это обеспечивает реалистичность изображения и концентрацию на выполнении задач. Специальные технологии подавляют мерцание экрана и снижают интенсивность синего света, что уменьшает зрительную усталость при просмотре. Матовое покрытие устраняет световые блики.Монитор MSI PRO MP273A оснащен видеоразъемами DisplayPort, HDMI и VGA. Акустическая система с двумя динамиками мощностью по 3 Вт воспроизводит чистый звук. Конструкция настольной подставки обеспечивает простое крепление и снятие без инструментов. Крепление стандарта VESA предусматривает фиксацию мини-ПК и использование монитора в качестве моноблока. Слот в подставке может использоваться для размещения телефона и аксессуаров.', 15000 ,'001.webp',0);
+createCard('Монитор &laquo;ASrock&raquo;','Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio consequatur excepturi laboriosam officia, quidem sequi rem non quaerat eligendi magnam totam aliquid enim fugit maiores suscipit sint eaque autem ullam tempore tempora repellat. Tempore fugit cupiditate quaerat repellendus aliquid ut.', 50000 ,'i.webp',0);
 for(let i=1; i<=10; i++)
-    createCard('монитор &laquo;msi&raquo;№'+ i,'Какое то описание', 15000 ,'samsung_F8500.webp',0);
+    createCard('Монитор &laquo;msi&raquo;№'+ i,'Какое то описание', 15000 ,'samsung_F8500.webp',0);
