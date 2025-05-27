@@ -445,3 +445,16 @@ width: 300px;
     }
     
 } */
+
+
+.modal{
+    width: 90%;
+    min-width: 800px;
+    height:400px;
+    display: none;
+    position: fixed;
+   margin: 0 auto;
+   left:5%;
+    background-color: rgba(199, 255, 241, 0.9);
+   background-color: #004;
+}
