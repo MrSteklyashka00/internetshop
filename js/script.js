@@ -1,5 +1,7 @@
 let modal= document.getElementById('modal');
 modal.style.display= 'none';
+let closeButton= document.getElementById('close_modal_button');
+closeButton.addEventListener('click',closeModal);
 
 
 
@@ -154,6 +156,10 @@ function addToBusket(id){
 
 function showModal(id=null){
     modal.style.display='block';
+}
+
+function closeModal(){
+    modal.style.display = 'none';
 }
 
 
