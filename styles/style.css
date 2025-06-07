@@ -453,11 +453,19 @@ width: 300px;
     height:600px;
     display: none;
     position: fixed;
-    margin: 0 auto;
-    left:5%;
+    /* 1ый способ выравнивания по центру */
+    /* left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%); */
+    /* 2ой способ */
+    left:0;
+    top:0;
+    right: 0;
+    bottom:0;
+    margin: auto;
     background-color: rgba(199, 255, 241, 0.9) ;
     border:  #02113d 3px solid;
-    margin-top:50px;
+    
 }
 
 .close_modal_button{
@@ -470,6 +478,7 @@ width: 300px;
     position: relative;
     right: -100%;
     top:-1.25em;
+     border:#ffffff00 1px solid;
 }
 .close_modal_button:hover{
     color:#ff0000;
@@ -487,7 +496,7 @@ width: 300px;
 .modal_image{
     width:45%;
     height:450px;
-    background-color: #fff;
+  background:  url('../img/Король_и_Шут_\(логотип\).jpg') center /contain  no-repeat;
     margin-top: 25px;
 }
 
@@ -500,4 +509,32 @@ width: 300px;
     margin-top: 25px;
     overflow-y: auto;
     padding:10px;
+}
+
+
+.modal_price_buy{
+    width:90%;
+    height: 50px;
+    display:flex;
+    justify-content: space-between;
+    margin:0 auto;
+}
+
+.modal_price{
+    font-size:36px;
+    width:300px;
+}
+
+.modal_buy{
+    width:300px;
+    height:50px;
+    font-size: 36px;
+    text-align: center;
+    background-color: rgb(2, 98, 105);;
+}
+
+.modal_buy:hover{
+    background-color: rgb(2, 98, 105);
+    color: #fff;
+    cursor: pointer;
 }
