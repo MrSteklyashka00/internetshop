@@ -538,3 +538,31 @@ width: 300px;
     color: #fff;
     cursor: pointer;
 }
+
+
+
+.login_form_container{
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login_input{
+    width: 500px;
+    margin: 10px;
+    font-size: 24px;
+}
+
+.unuse_block{
+    width: 10px;
+    position: relative;
+}
+
+.user_name_login{
+    position: absolute;
+    width: 300px;
+    text-align: right;
+    right:10px;
+    top: 10px;
+    color:#00ffd5;
+}

@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once './engine/Auth.php';
+$userName=getUserName();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -29,7 +31,17 @@ session_start();
             
          </div>
          <div class="header_name">мой интернет магазин</div>
-        <div class="unuse_block"></div>
+        <div class="unuse_block">
+            <div class="user_name_login">
+                <?= $userName?>
+                <?php
+                if($userName)
+                echo '| <a href="/logout.php">Выйти</a>';
+            else
+              echo ' <a href="/login.php">Войти</a>';
+                ?>
+            </div>
+        </div>
     </header>
     <div class="menu">
         Меню
@@ -42,9 +54,7 @@ session_start();
         </div>
     </div>
 
-<?php
-echo "Hello world";
-?>
+
 
 
     <main class="main_content" id="main">
