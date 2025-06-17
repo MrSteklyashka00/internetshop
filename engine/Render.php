@@ -16,7 +16,7 @@ function render($template,$params=[]){
     echo  renderTemplate('layout',
     [
         'header'=>renderTemplate('logo_header',[]),
-        'content'renderTemplate($template, $params),
+        'content'=>renderTemplate($template, $params),
         'footer'=>renderTemplate('footer',[])
     ]
 );
