@@ -1,8 +1,4 @@
-<?php
-session_start();
-include_once './engine/Auth.php';
-$userName=getUserName();
-?>
+
  <header class="header">
          <div class="logo">
             
@@ -13,7 +9,7 @@ $userName=getUserName();
                 <?= $userName?>
                 <?php
                 if($userName)
-                echo '| <a href="/logout.php">Выйти</a>';
+                echo '| <a href="/user/logout">Выйти</a>';
             else
               echo ' <a href="/user/authorize">Войти</a>';
                 ?>

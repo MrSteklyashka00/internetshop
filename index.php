@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE & ~E_WARNING);
+session_start();
 
 use app\engine\Autoload;
 use app\engine\Request;
