@@ -7,7 +7,7 @@ class Autoload{
         $fileName=str_replace('\\',DS, $className);
         $fileName=str_replace('app'.DS, ROOT.DS, $className) . '.php';
         if(file_exists($fileName))
-            include $className;
+            include $fileName;
     }
 }
 

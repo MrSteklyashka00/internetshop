@@ -12,10 +12,4 @@ else{
      header('location: /');
 }
 
-render('login_form',[]);
-
-
-
-
-
-
+render(('login_form',[]);)

@@ -1,6 +1,10 @@
 <?php
-function renderTemplate($template,$params=[]){
-    $tempPath=dirname(__DIR__).'/views/'.$template.'.php';
+
+namespace app\engine;
+
+class Render{
+public function renderTemplate($template,$params=[]){
+    $tempPath= ROOT .'/views/'.$template.'.php';
     ob_start();
     extract($params);
     if(file_exists($tempPath)){
@@ -10,15 +14,18 @@ function renderTemplate($template,$params=[]){
     else
     echo 'Невозможно отобразить элемент';
 }
-
-
-function render($template,$params=[]){
-    echo  renderTemplate('layout',
-    [
-        'header'=>renderTemplate('logo_header',[]),
-        'content'=>renderTemplate($template, $params),
-        'footer'=>renderTemplate('footer',[])
-    ]
-);
-
 }
+
+
+
+
+// function render($template,$params=[]){
+//     echo  renderTemplate('layout',
+//     [
+//         'header'=>renderTemplate('logo_header',[]),
+//         'content'=>renderTemplate($template, $params),
+//         'footer'=>renderTemplate('footer',[])
+//     ]
+// );
+
+// }
