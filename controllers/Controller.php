@@ -14,7 +14,7 @@ Class Controller{
     }
 
     protected function renderTeamplate($template, $params=[]){
-        $this->render->renderTemplate($template, $params);
+        return $this->render->renderTemplate($template, $params);
     }
 
      protected function render($template, $params=[]){
