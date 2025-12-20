@@ -54,7 +54,7 @@ nisi eaque delectus! Voluptatem, harum!</p>
     <li>sdgfgfd</li>
     <li>sdgf</li>
 </ol>
-<img src="./img/Король_и_Шут_(логотип).jpg" alt="Здесь должна быть картинка">
+<img src="/img/Король_и_Шут_(логотип).jpg" alt="Здесь должна быть картинка">
 
     </div>
     
@@ -66,7 +66,7 @@ nisi eaque delectus! Voluptatem, harum!</p>
     </div>
 
     <div class="card_wrapper">
-        <div class="photo_wrapper"><img src="./img/Король_и_Шут_(логотип).jpg"class="card_img"></div>
+        <div class="photo_wrapper"><img src="/img/Король_и_Шут_(логотип).jpg"class="card_img"></div>
         <div class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, ducimus?</div>
         <div class="card_button">кнопка</div>
         <div class="card_close">X</div>
@@ -77,7 +77,7 @@ nisi eaque delectus! Voluptatem, harum!</p>
     <div class="card_wrapper2">
         <div class="card_close2">X</div>
         <div class="card_flex_container">
-            <div class="photo_wrapper2"><img src="./img/Король_и_Шут_(логотип).jpg"class="card_img"></div>
+            <div class="photo_wrapper2"><img src="/img/Король_и_Шут_(логотип).jpg"class="card_img"></div>
             <div class="card_text_button">
                 <div class="card_text2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, ducimus?</div>
                 <div class="card_button2">кнопка</div>
@@ -101,4 +101,4 @@ nisi eaque delectus! Voluptatem, harum!</p>
     // alert(1+5);
 </script>
     
-<script src="./js/script.js"></script>
+<script src="/js/script.js"></script>

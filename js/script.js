@@ -129,7 +129,7 @@ function createCard(name,desc,price,img,id){
         let card = document.getElementById('card');
         let newCard= card.cloneNode(true);
         newCard.style.display='block';
-        newCard.childNodes[1].style.background="url(./img/"+ img+") center /cover  no-repeat";
+        newCard.childNodes[1].style.background="url(/img/"+ img+") center /cover  no-repeat";
         newCard.childNodes[3].innerHTML=name;
         newCard.childNodes[5].innerHTML=desc;
         newCard.childNodes[7].innerHTML='<b>Цена: <b>' + price +' р.';

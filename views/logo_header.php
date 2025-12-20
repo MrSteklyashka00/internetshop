@@ -15,7 +15,7 @@ $userName=getUserName();
                 if($userName)
                 echo '| <a href="/logout.php">Выйти</a>';
             else
-              echo ' <a href="/login.php">Войти</a>';
+              echo ' <a href="/user/authorize">Войти</a>';
                 ?>
             </div>
         </div>
