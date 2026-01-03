@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\engine\Render;
+use app\engine\Session;
 
 Class Controller{
     protected $action;
@@ -21,7 +22,7 @@ Class Controller{
          echo $this->renderTeamplate(
             'layout',
     [
-        'header'=> $this->renderTeamplate('logo_header',[]),
+        'header'=> $this->renderTeamplate('logo_header',['userName'=>Session::getUserName()]),
         'content'=> $this->renderTeamplate($template, $params),
         'footer'=> $this->renderTeamplate('footer',[])
     ]
@@ -31,6 +32,10 @@ Class Controller{
 public function runAction($action, $params=[]){
    $this->action=$action ?:$this->defaultAction;
    $method = 'action'.ucfirst($this->action);
+
+// var_dump($action);
+// die;
+
    if(method_exists($this, $method))
     $this->$method($params);
     else

@@ -18,7 +18,7 @@ class Request
     }
 
     protected function parseRequest(){
-        $this->rewquestString=$_SERVER['REQUEST_URI'];
+        $this->requestString=$_SERVER['REQUEST_URI'];
         $this->method=$_SERVER['REQUEST_METHOD'];
         $url=explode('/',$this->requestString);
         $this->params=$_REQUEST;

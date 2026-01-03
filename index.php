@@ -15,6 +15,10 @@ spl_autoload_register([new Autoload(),'loadClass']);
 
 $request = new Request();
 
+// var_dump($request->getControllerName());
+// var_dump($request->getActionName());
+// die;
+
 $controllerName=$request->getControllerName()?: 'shop' ;
 $actionName=$request->getActionName()?: 'index';
 
