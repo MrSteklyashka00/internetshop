@@ -29,5 +29,14 @@ INSERT INTO product (name, price, category_id) VALUES
 ('Телевизор',25000,1),
 ('ПК',120000,2),
 ('Ноутбук',90000,2),
-('телефон Xiaomi'40000,3),
+('телефон Xiaomi',40000,3),
 ('Телефон POCO',200000,3);
+
+SELECT
+     p.name,
+     p.price,
+     c.name
+     FROM product AS p
+     LEFT JOIN category AS c ON p.category_id=c.category_id;
+
+//etriz.ru
