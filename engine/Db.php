@@ -43,4 +43,38 @@ class Db{
         return $this->connection;
      }
 
+    private function query($sql,$params){
+        $STH=$this->getConnection()->prepare($sql);
+        $STH->execute($params);
+        return $STH;
+    }     
+
+    public function queryOneAssoc($sql,$params=[]){
+        return $this->query($sql,$params)->fetch();
+    }
+    
+    public function quertOneClass($sql,$params=[] =[],$class){
+    $STH=$this->query($qsl,$params);
+    $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+    return $STH->fetch();
+    }
+        public function queryManyAssoc($sql,$params=[]){
+        return $this->query($sql,$params)->fetchAll();
+    }
+    
+    public function quertManyClass($sql,$params=[] =[],$class){
+    $STH=$this->query($qsl,$params);
+    $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+    return $STH->fetchAll();
+
+    
+    }
+
+    public function execute($sql,$params=[]){
+        return $this->query($sql,$params)->rowCount();
+    }
+
+    public function lastInsertId(){
+        return $this->connection->lastInsertId();
+    }
 }
