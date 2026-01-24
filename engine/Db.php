@@ -49,21 +49,19 @@ class Db{
         return $STH;
     }     
 
-    public function queryOneAssoc($sql,$params=[]){
-        return $this->query($sql,$params)->fetch();
-    }
+
     
-    public function quertOneClass($sql,$params=[] =[],$class){
+    public function quertOne($sql,$params=[] =[],$class=null){
     $STH=$this->query($qsl,$params);
+    if ($class)
     $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
     return $STH->fetch();
     }
-        public function queryManyAssoc($sql,$params=[]){
-        return $this->query($sql,$params)->fetchAll();
-    }
+  
     
-    public function quertManyClass($sql,$params=[] =[],$class){
+    public function quertMany($sql,$params=[] =[],$class=null){
     $STH=$this->query($qsl,$params);
+    if($class)
     $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
     return $STH->fetchAll();
 
