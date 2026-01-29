@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-use app\interface\IModel;
+use app\interfaces\IModel;
 
 abstract class Model implements IModel{
     protected $props=[];
@@ -14,6 +14,7 @@ abstract class Model implements IModel{
     }
 
     public function __get($name){
+        if(array_key_exists($name,$this->props)){
         return $this->$name;
     }
 }

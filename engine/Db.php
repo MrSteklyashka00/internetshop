@@ -18,7 +18,7 @@ class Db{
      private $connection = null;
 
      private function prepareDsnString(){
-        return sprinf(
+        return sprintf(
             //mysql:host=localhost;dbname=ishop;charset=utf8
             "%s:host=%s;dbname=%s;charset=%s",
             $this->config['driver'],
@@ -51,7 +51,7 @@ class Db{
 
 
     
-    public function quertOne($sql,$params=[] =[],$class=null){
+    public function queryOne($sql,$params=[],$class=null){
     $STH=$this->query($qsl,$params);
     if ($class)
     $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
@@ -59,8 +59,8 @@ class Db{
     }
   
     
-    public function quertMany($sql,$params=[] =[],$class=null){
-    $STH=$this->query($qsl,$params);
+    public function queryMany($sql,$params=[] =[],$class=null){
+    $STH=$this->query($sql,$params);
     if($class)
     $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
     return $STH->fetchAll();

@@ -6,9 +6,9 @@ abstract class DBModel extends Model{
     $tableName=static::getTableName();
     $sql = "SELECT * FROM {$tableName} WHERE id=:id";
     if($isClass)
-    return Db::getInstance()->queryOneClass($sql,['id'=>$id],static::class);
+    return Db::getInstance()->queryOne($sql,['id'=>$id],static::class);
     else
-  return Db::getInstance()->queryOneClass($sql,['id'=>$id]);
+  return Db::getInstance()->queryOne($sql,['id'=>$id]);
     }   
 public static function getAll($orderBy='id',$desc='', $isClass=true){
       $tableName=static::getTableName();
@@ -24,9 +24,9 @@ public static function getwhere($name,$sign,$value,$isClass=true){
     $tableName=static::getTableName();
     $sql="SELECT * FROM {$tableName} WHERE {$name}{$sign}:{$name}";
     if($isClass)
-      return Db::getInstance()->querMany($sql,[$name=>$value],static::class);
+      return Db::getInstance()->queryMany($sql,[$name=>$value],static::class);
    else
-            return Db::getInstance()->querMany($sql,[$name=>$value]);
+            return Db::getInstance()->queryMany($sql,[$name=>$value]);
 
 }
 protected function insert(){
@@ -38,7 +38,7 @@ protected function insert(){
       $columns[]=$key;
 
    }
-   $cilums=implode(',',$columns)
+   $columns=implode(',',$columns)
    $values=implode(',',array_keys($params));
    $sql="INSERT INTO {$tableName} ({$columns}) VALUES({$values})";
    Db::getInstance()->execute($sql,$params);
