@@ -28,7 +28,7 @@ class Db{
         );
      }
 
-     private function gerConnection(){
+     private function getConnection(){
         if(is_null($this->connection)){
             $this->connection = new \PDO(
                 $this->prepareDsnString(),
