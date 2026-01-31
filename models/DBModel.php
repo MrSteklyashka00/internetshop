@@ -34,11 +34,11 @@ protected function insert(){
    $params=[];
    $tableName=$this->getTableName();
    foreach($this->props as $key=>$value){
-      $params[':'.$key]=$this->$key
+      $params[':'.$key]=$this->$key;
       $columns[]=$key;
 
    }
-   $columns=implode(',',$columns)
+   $columns=implode(',',$columns);
    $values=implode(',',array_keys($params));
    $sql="INSERT INTO {$tableName} ({$columns}) VALUES({$values})";
    Db::getInstance()->execute($sql,$params);
@@ -50,7 +50,7 @@ protected function update(){
    $tableName=$this->getTableName();
    foreach($this->props as $key=>$value){
       if($value) continue;
-      $params[':'.$key]=$this->$key
+      $params[':'.$key]=$this->$key;
       $columns[]=$key;
 
    }
@@ -60,7 +60,7 @@ protected function update(){
       foreach($columns as $value){
          $par_str.=' '.$value.'=:'.$value.',';
       }
-      $par_str=substr($par_str,0,-2).' ';
+      $par_str=substr($par_str,0,-1).' ';
    }
    $sql="UPDATE {$tableName} SET {$par_str} WHERE id=:id";
    Db::getInstance()->execute($sql,$params);
@@ -68,4 +68,18 @@ protected function update(){
    return $this;
 
 }
+
+public function save(){
+   if($this->id==null)
+      $this->insert();
+   else
+      $this->update();
+}
+public function delete(){
+   $tableName=$this->getTableName();
+   $sql="DELETE FROM {$tableName} WHERE id=:id";
+   Db::getInstance()->execute($sql, ['id'=>$this->id]);
+}
+
+
 }

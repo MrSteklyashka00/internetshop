@@ -1,7 +1,7 @@
 <?php
 namespace app\interfaces;
 interface IModel{
-    public static function getOneClass($id);
-     public static function getAllClass();
+    public static function getOne($id);
+     public static function getAll();
       public static function getTableName();
 }
