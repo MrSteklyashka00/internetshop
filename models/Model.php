@@ -18,3 +18,4 @@ abstract class Model implements IModel{
         return $this->$name;
     }
 }
+}

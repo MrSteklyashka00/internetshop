@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class User extends DBmodel{
+class User extends DBModel{
     protected $id;
     protected $lastname;
     protected $firstname;
@@ -42,7 +42,7 @@ class User extends DBmodel{
             $this->password=password_hash($password,PASSWORD_DEFAULT);
 
     }
-    public static function getTatbleName()
+    public static function getTableName()
     {
       return 'users';
     }

@@ -1,5 +1,5 @@
 <?php
-namespace app\\engine;
+namespace app\engine;
 
 use app\traits\TSingleton;
 
@@ -59,7 +59,7 @@ class Db{
     }
   
     
-    public function queryMany($sql,$params=[] =[],$class=null){
+    public function queryMany($sql,$params=[],$class=null){
     $STH=$this->query($sql,$params);
     if($class)
     $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
