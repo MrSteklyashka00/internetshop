@@ -6,7 +6,7 @@ class User extends DBModel{
     protected $id;
     protected $lastname;
     protected $firstname;
-    protected $nidlename;
+    protected $midlename;
     protected $birthdate;
     protected $email;
     protected $password;
@@ -15,7 +15,7 @@ class User extends DBModel{
     protected $props=[
         'lastname'=>false,
         'firstname'=>false,
-        'nidlename'=>false,
+        'midlename'=>false,
         'birthdate'=>false,
         'email'=>false,
         'password'=>false,
@@ -24,8 +24,8 @@ class User extends DBModel{
 
     public function __construct(
        $lastname=null,
-       $firstnam=null,
-       $nidlename=null,
+       $firstname=null,
+       $midlename=null,
        $birthdate='2000-01-01',
        $email=null,
        $password=null,
@@ -33,11 +33,11 @@ class User extends DBModel{
     )
     {
         $this->lastname=$lastname;
-        $this->nidlename=$firstname;
-        $this->birthdate=$firstname;
-        $this->email=$firstname;
+        $this->midlename=$midlename;
+        $this->birthdate=$birthdate;
+        $this->email=$email;
         $this->firstname=$firstname;
-        $this->role=$firstname;
+        $this->role=$role;
         if($password)
             $this->password=password_hash($password,PASSWORD_DEFAULT);
 
