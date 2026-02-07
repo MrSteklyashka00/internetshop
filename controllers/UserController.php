@@ -29,6 +29,6 @@ class UserController extends Controller{
 
     public function actionRegistr(){
         if(!Session::isAuth())
-            echo $this->render('user/registr');
+            echo $this->render('user/register');
     }
 }
