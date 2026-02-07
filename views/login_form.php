@@ -4,4 +4,5 @@
         <input type="password" name="password" placeholder="Пароль"class="login_input"><br>
         <input type="submit" value="Войти"id=loin_APK class="login_input">
     </form>
+    <a href="/user/registr">Зарегестрироваться</a>
 </div>

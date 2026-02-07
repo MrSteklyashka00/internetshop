@@ -11,8 +11,8 @@ class ShopController extends Controller
         echo $this->render('main', []);
     }
     public function actionGetUsers(){
-        $user= new User('Иванов','Иван','Иванович','1999-05-24','ivan@mail.ru','1234',0);
-        $user->save();
+        // $user= new User('-','admin','','1999-05-24','admin','1234',-1);
+        // $user->save();
         $users=User::getAll();
         var_dump($users);
     }

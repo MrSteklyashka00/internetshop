@@ -26,4 +26,9 @@ class UserController extends Controller{
     public function actionTest(){
         echo "Heloo world!!!";
     }
+
+    public function actionRegistr(){
+        if(!Session::isAuth())
+            echo $this->render('user/registr');
+    }
 }

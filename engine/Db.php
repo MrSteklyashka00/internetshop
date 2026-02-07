@@ -52,7 +52,7 @@ class Db{
 
     
     public function queryOne($sql,$params=[],$class=null){
-    $STH=$this->query($qsl,$params);
+    $STH=$this->query($sql,$params);
     if ($class)
     $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
     return $STH->fetch();

@@ -566,3 +566,16 @@ width: 300px;
     top: 10px;
     color:#00ffd5;
 }
+
+.register_from_error{
+    color:#f00;
+}
+
+.form_label{
+    display: block;
+    margin: 0 0 0 45;
+   padding: 0 ;
+   text-indent: 0;
+   font-size: 20px;
+   text-align: left;
+}
