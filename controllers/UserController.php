@@ -30,5 +30,26 @@ class UserController extends Controller{
     public function actionRegistr(){
         if(!Session::isAuth())
             echo $this->render('user/register');
+
+    }
+    public function actionNewUSer($p){
+        if(!session::isAuth()){
+            $error=null;
+            if(
+                $p['lastname']=='' ||
+                $p['name']== '' ||
+                $p['birthdate']== ''||
+                $p['email']== '' ||
+                $p['password']=='' ||
+                $p['password2']=='' 
+            ){
+              $error'Заполнены не все обязательные поля!';
+              echo $this->render('user/register', ['p'=>$p,'error'=>$error]);
+
+            } else if ($p['password']!=$p['password2']){
+                $error'Пароли не совпадают!';
+              echo $this->render('user/register', ['p'=>$p,'error'=>$error]);
+            }
+        }
     }
 }

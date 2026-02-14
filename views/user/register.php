@@ -6,25 +6,36 @@ if($error){
     <h2 class="register_from_error"><?=$error?></h2>
     <?php }
     ?>
-    <form action="user/newuser" method="post">
+    <form action="/user/newuser" method="post">
         <label for="lastname" class="form_label">Фамилия:</label>
         <input type="text" name="lastname" id="lastname" class="login_input" placeholder='Фамилия'>
-    </form>
-      <form action="user/newuser" method="post">
+   
+      
       <label for="name" class="form_label">Имя:</label>
       <input type="text" name="name" id="name" class="login_input" placeholder='Имя'>
-</form>
-<form action="user/newuser" method="post">
+
+
       <label for="patronymic" class="form_label">Отчество:</label>
       <input type="text" name="patronymic" id="patronymic" class="login_input" placeholder='Отчество'>
-</form>
-<form action="user/newuser" method="post">
-      <label for="email" class="form_label">почта:</label>
-      <input type="email" name="email" id="email" class="login_input" placeholder='почта'>
-</form>
- <form action="user/newuser" method="post">
-    <label for="password" class="form_label">пароль</label>
-    <input type="password" name="password" id="password" class="login_input" plaseholder='пароль'>
+       
+      <label for="birthdate" class="form_label">Дата рождения:</label>
+      <input type="Date" name="birthdate" id="birthdate" class="login_input">
 
+
+
+
+      <label for="email" class="form_label">Почта:</label>
+      <input type="email" name="email" id="email" class="login_input" placeholder='почта'>
+
+ 
+    <label for="password" class="form_label">Пароль</label>
+    <input type="password" name="password" id="password" class="login_input" plaсeholder='пароль'>
+
+    <label for="password2" class="form_label"> Повторите пароль</label>
+    <input type="password" name="password2" id="password2" class="login_input" plaсeholder='пароль'>
+
+    <input type="submit" value="Зарегистрироваться"class="login_input">
+
+      </form>
 
 </div>
