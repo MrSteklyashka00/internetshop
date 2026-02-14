@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\engine\Session;
+use app\models\User;
 
 class UserController extends Controller{
     public function actionAuthorize()
@@ -43,12 +44,31 @@ class UserController extends Controller{
                 $p['password']=='' ||
                 $p['password2']=='' 
             ){
-              $error'Заполнены не все обязательные поля!';
+              $error ='Заполнены не все обязательные поля!';
               echo $this->render('user/register', ['p'=>$p,'error'=>$error]);
 
             } else if ($p['password']!=$p['password2']){
-                $error'Пароли не совпадают!';
+                $error ='Пароли не совпадают!';
               echo $this->render('user/register', ['p'=>$p,'error'=>$error]);
+            } else {
+                $user = new User(
+                    $p ['lastname'],
+                    $p['name'],
+                    $p['patronymic'],
+                    $p['birthdate'],
+                    $p['email'],
+                    $p['password'],
+                    $p['password'],
+                    15
+                );
+                $user->save();
+                if(Session::login($p['email'],$p['password']))
+                    header('location: /');
+                else{
+                    $error ='Ошибка регистрации, попробуйте позднее!';
+              echo $this->render('user/register', ['p'=>$p,'error'=>$error]);
+
+                }
             }
         }
     }
