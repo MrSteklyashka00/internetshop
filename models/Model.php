@@ -14,8 +14,8 @@ abstract class Model implements IModel{
     }
 
     public function __get($name){
-        if(array_key_exists($name,$this->props)){
+       
         return $this->$name;
-    }
+    
 }
 }

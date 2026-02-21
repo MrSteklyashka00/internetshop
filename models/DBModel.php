@@ -42,6 +42,7 @@ protected function insert(){
    $values=implode(',',array_keys($params));
    $sql="INSERT INTO {$tableName} ({$columns}) VALUES({$values})";
    Db::getInstance()->execute($sql,$params);
+   $this->id=Db::getInstance()->lastInsertId();
    return $this;
 }
 protected function update(){

@@ -42,6 +42,15 @@ public static function getRole(){
     return 0;
 }
 
+public static function getUserId(){
+    if(self::isAuth()){
+        $user=USer::getWhere('email','=',$_SESSION['user']);
+        if($User)
+            return $user[0]->id;
+    }
+    return 0;
+}
+
 public static function isAdmin(){
     if(self::getRole()<0)
         return true;

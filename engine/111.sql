@@ -39,4 +39,17 @@ SELECT
      FROM product AS p
      LEFT JOIN category AS c ON p.category_id=c.category_id;
 
+
+     CREATE TABLE category (
+id INT(11) PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(64) NOT NULL, 
+img VARCHAR(128),
+ description TEXT(256),
+ user_id INT(11),
+ create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN_KEY (user_id)
+    REFERENCES users(id)
+    ON DELETE SET NULL
+);
+
 //etriz.ru
