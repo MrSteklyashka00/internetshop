@@ -1,6 +1,8 @@
 <?php
 
 namespace app\controllers;
+
+use app\engine\Session;
 use app\models\User;
 
 class ShopController extends Controller
@@ -16,4 +18,13 @@ class ShopController extends Controller
         $users=User::getAll();
         var_dump($users);
     }
+
+     public function actionNewCategoryForm(){
+        if(Session::getRole()& CAN_EDIT_PRODUCT){
+            echo $this->render('management/newcategoryform',[]);
+        }
+        else header('location: /'); 
+     }
+  
+
 }
