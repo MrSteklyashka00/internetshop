@@ -35,8 +35,8 @@ header('location: /');
 
 public static function getRole(){
     if(self::isAuth()){
-        $user=USer::getWhere('email','=',$_SESSION['user']);
-        if($User)
+        $user=User::getWhere('email','=',$_SESSION['user']);
+        if($user)
             return $user[0]->role;
     }
     return 0;
