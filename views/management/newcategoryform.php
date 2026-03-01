@@ -6,7 +6,7 @@ if($error){
     <h2 class="register_from_error"><?=$error?></h2>
     <?php }
     ?>
-    <form action="/shop/newcategory" method="post">
+    <form action="/shop/newcategory" method="post" enctype="multipart/form/data">
       
    
       

@@ -45,7 +45,7 @@ public static function getRole(){
 public static function getUserId(){
     if(self::isAuth()){
         $user=USer::getWhere('email','=',$_SESSION['user']);
-        if($User)
+        if($user)
             return $user[0]->id;
     }
     return 0;
