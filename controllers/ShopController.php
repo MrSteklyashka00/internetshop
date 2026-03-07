@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\emgine\File;
+use app\engine\File;
 use app\engine\Session;
 use app\models\Category;
 use app\models\User;
@@ -46,7 +46,7 @@ class ShopController extends Controller
             echo $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
         else{
             $upDir='/public/images/';
-            $extencion =  pathinfo($file->getFileName(),PATHINFO_EXTENSION);
+            $extension =  pathinfo($file->getFileName(),PATHINFO_EXTENSION);
             $fn='category_'.uniqid().'.'.$extension;
             if($file->save($fn,$upDir)){
                 $cat = new Category($p['name'],$fn,$p['description']);
@@ -66,5 +66,11 @@ class ShopController extends Controller
             }
         }
     }else header('location: /');
+   }
+
+   public function actionNewProductForm(){
+    if(Session::getRole() & CAN_EDIT_PRODUCT){
+        echo $this->render('management/newproductform');
+    } else header('location: /');
    }
 }

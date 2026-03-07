@@ -1,5 +1,5 @@
 <?php
-namespace app\emgine;
+namespace app\engine;
 
 class File{
     protected $file = null;
