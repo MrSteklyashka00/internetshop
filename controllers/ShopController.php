@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\engine\File;
 use app\engine\Session;
 use app\models\Category;
+use app\models\Product;
 use app\models\User;
 
 class ShopController extends Controller
@@ -68,9 +69,62 @@ class ShopController extends Controller
     }else header('location: /');
    }
 
-   public function actionNewProductForm(){
+   public function actionNewProductForm()
+   {
     if(Session::getRole() & CAN_EDIT_PRODUCT){
-        echo $this->render('management/newproductform');
+        $cats=Category::getAll('name','',false);
+        echo $this->render('management/newproductform',['cats'=>$cats]);
     } else header('location: /');
    }
+
+     protected function strToNumber($str){
+        $str=str_replace(',','.', $str);
+          $str=str_replace(' ','', $str);
+          if(is_numeric($str))
+            return $str+0;
+        return null;
+
+        }
+
+ public function actionNewProduct($p){
+    if(Session::getRole()&CAN_EDIT_PRODUCT){
+        $error=null;
+        $cat=Category::getALL('name','',false);
+        if($p['name']===''|| !$this->strToNumber($p['price'])) {
+            $error='Не указано название или цена';
+            echo $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
+        } else{
+            $file = new File($_FILES['image']);
+            if($file->hasFile()){
+                if(!$file->upCorrectly())
+                    $error='Ошибка при загрузке файла!';
+                else 
+                    if(!$file->isImage())
+                        $error='Файл не является изображением';
+                if($error)    
+             echo $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
+        else{
+            $upDir='/public/images/';
+            $extension =  pathinfo($file->getFileName(),PATHINFO_EXTENSION);
+            $fn='product_'.uniqid().'.'.$extension;
+            if($file->save($fn,$upDir)){
+                $prod= new Product($p['name'],$p['description'], $this->strToNumber($p['price']),$fn,$p['category']);
+                $prod->save();
+                header('location: /');
+            }
+            else{
+                $error='Ошибка при сохранение файла';
+            echo $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
+            }
+
+        }        
+            }else{
+                 $prod= new Product($p['name'],$p['description'], $this->strToNumber($p['price']),'',$p['category']);
+                $prod->save();
+                header('location: /');
+            }
+        }
+    }else header('location: /');
+   }
+
 }

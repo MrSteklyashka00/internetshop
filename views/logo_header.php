@@ -21,8 +21,8 @@
         <div class="menu_content">
             <ul class="menu_list">
                 <li class="menu_items"><a href="https://google.com">Google</a></li>
-                <li class="menu_items">пункт2</li>
-                <li class="menu_items">пункт3</li>
+                <li class="menu_items"><a href="/shop/newcategoryform">Новая Категория</a></li>
+                <li class="menu_items"><a href="/shop/newproductform">Новый товар</a> </li>
             </ul>
         </div>
     </div>
