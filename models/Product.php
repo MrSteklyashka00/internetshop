@@ -3,7 +3,7 @@ namespace app\models;
 
 use app\engine\Session;
 
-class Product extends DBModela{
+class Product extends DBModel{
     protected $id;
     protected $name;
     protected $description;
@@ -35,8 +35,8 @@ class Product extends DBModela{
     $this->description = $description;
     $this->price = $price;
     $this->img = $img;
-    $this->category_id = $category_id;
-    $this->user_id=Session::getUserId()
+    $this->category_id = ($category_id)? $category_id:null;
+    $this->user_id=Session::getUserId();
     }
 
     public static function getTableName()

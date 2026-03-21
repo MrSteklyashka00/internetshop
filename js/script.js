@@ -1,3 +1,23 @@
+let products=null;
+
+async function fetchPostData(url, outdata, callbackfunc){
+    fetch(url,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(outdata)
+    })
+    .then(response=>response.json())
+    .then((data)=>{
+        callbackfunc(data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    });
+}
+
+
+
+
 let modal= document.getElementById('modal');
 modal.style.display= 'none';
 let closeButton= document.getElementById('close_modal_button');
@@ -8,8 +28,8 @@ closeButton.addEventListener('click',closeModal);
 console.log('2'+2 - '2');
 let a=5;
 console.log(10-a);
-let s=prompt('Как вас зовут?');
-console.log('Привет,'+s);
+// let s=prompt('Как вас зовут?');
+// console.log('Привет,'+s);
 const b=10;
 a=20;
 // b=200 менять контанту нельзя
@@ -139,7 +159,7 @@ function createCard(name,desc,price,img,id){
         }
         newCard.id='card_'+id;
         newCard.onclick=function cardClick(){
-            showModal(id);
+            showModal(name,desc,price,img,id);
         }
 
        main.append(newCard);
@@ -149,13 +169,31 @@ function addToBusket(id){
     print(id);
 }
 
-function showModal(id=null){
+function showModal(name='',decs='',price='',img='',id = null){
     modal.style.display='block';
 }
 
 function closeModal(){
     modal.style.display = 'none';
+
 }
+
+let showProds=(data)=>{
+    if(data['status']=='OK'){
+        products=data['prods'];
+        for(let d of products){
+            let pImg='/img/001.jpg';
+            if(d['img'])
+                pImg='/public/images/'+d['img'];
+            createCard(d['name'],d['description'],d['price'],pImg,d['id']);
+        }
+    }else print('Ошибка получения данных о продуктах');
+}
+
+fetchPostData('/shop/getproducts',{'limit':-1,'offset':0},showProds);
+
+
+
 
 createCard(product.name, product.desc, product.price, product.path, product.id);
 createCard('Монитор &laquo;samsung&raquo;','Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ducimus dignissimos vitae animi tenetur similique praesentium, nisi libero. Deleniti, nihil.', 15000 ,'samsung-f24t450fqi-0-v1.jpg',110);

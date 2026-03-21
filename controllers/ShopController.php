@@ -89,7 +89,7 @@ class ShopController extends Controller
  public function actionNewProduct($p){
     if(Session::getRole()&CAN_EDIT_PRODUCT){
         $error=null;
-        $cat=Category::getALL('name','',false);
+        $cats=Category::getALL('name','',false);
         if($p['name']===''|| !$this->strToNumber($p['price'])) {
             $error='Не указано название или цена';
             echo $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
@@ -126,5 +126,11 @@ class ShopController extends Controller
         }
     }else header('location: /');
    }
+
+    public function actionGetProducts($p){
+        $prods=Product::getALL('name','',false);
+        echo json_encode(['status'=>'OK','prods'=>$prods],JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); //  localhost/shop/getproducts
+    }
+
 
 }

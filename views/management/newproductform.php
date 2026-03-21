@@ -30,7 +30,7 @@ if($error){
         foreach($cats as $cat){
           $sel=($cat['id']==$p['category'])?' selected':'';
         ?>
-          <option value="<?= $cat['idd'] ?>"<?= $sel ?>><?= $cat['name'] ?></option>
+          <option value="<?= $cat['id'] ?>"<?= $sel ?>><?= $cat['name'] ?></option>
         <?php } ?>
 
       </select>
