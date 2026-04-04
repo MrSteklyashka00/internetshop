@@ -1,7 +1,7 @@
 let products=null;
 
 let addBusketNumber=(n)=>{
-return '<div class="in_busket_container" id="in_busket_container"><divclass="in_busket_plus"id="in_busket_plus">+</div><div class="in_busket_number" id="in_busket_number">'+n+'</div><div class="in_busket_plus"id="in_busket_minus">-</div></div>'
+return '<div class="in_busket_container" id="in_busket_container"><div class="in_busket_plus"id="in_busket_plus">+</div><div class="in_busket_number" id="in_busket_number">'+n+'</div><div class="in_busket_plus"id="in_busket_minus">-</div></div>'
 }
 
 
@@ -174,6 +174,11 @@ function createCard(name,desc,price,img,id){
 
 function addToBusket(id){
     print(id);
+    let mb = document.getElementsByClassName('modal_buy');
+    if (mb) {
+        mb=mb[0];
+        mb.innerHTML=addBusketNumber(1);
+    }
 }
 
 function showModal(name='',desc='',price='',img='',id = null){
@@ -220,7 +225,17 @@ let modal_buy = document.getElementsByClassName("modal_buy")[0];
 modal_buy.addEventListener('click',buy);
 
 function buy(e){
-let id=e.currentTarget.id;
-id=id.split('_')[2];
-alert(i);
+    let el=e.target;
+   let el_id=el.id
+   let id=el_id.split('_')[2];
+   if(el_id=='in_busket_minus'){
+    in_busket_number.innerHTML--;
+    if(in_busket_number.innerHTML==0)
+        document.getElementsByClassName('modal_buy')[0].innerHTML='Купить';
+   }else 
+   if (el_id=='in_busket_plus')
+ in_busket_number.innerHTML++;
+else if(el.innerHTML=='Купить')
+    el.innerHTML==addBusketNumber(1);
+//alert(i);
 }
