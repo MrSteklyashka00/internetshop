@@ -72,4 +72,17 @@ REFERENCES category(id)
 ON DELETE SET NULL      
 );
 
+
+ CREATE TABLE basket(
+ id INT(11) PRIMARY KEY AUTO_INCREMENT,
+ user_id INT(11),
+ status INT,
+ paid_at TIMESTAMP,
+ created_at TIMESTAMP 
+     DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (user_id)
+     REFERENCES users(id)
+     ON DELETE CASCADE
+ );
+
 //etriz.ru

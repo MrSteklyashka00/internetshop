@@ -187,7 +187,7 @@ function showModal(name='',desc='',price='',img='',id = null){
     modal_product_name.innerHTML = name;
     modal_text.innerHTML=desc;
     modal_price.innerHTML='Цена: <b>' + price + ' р. </b>';
-    let modalbuy = document.getElementsByClassName('modal_buy');
+    let modalBuy = document.getElementsByClassName('modal_buy');
     modalBuy=(modalBuy)? modalBuy[0]:null;
     if(modal_buy) modalBuy.id='modal_buy_' + id;
 }
@@ -235,7 +235,7 @@ function buy(e){
    }else 
    if (el_id=='in_busket_plus')
  in_busket_number.innerHTML++;
-else if(el.innerHTML=='Купить')
-    el.innerHTML==addBusketNumber(1);
+else if(el.innerHTML =='Купить')
+    el.innerHTML= addBusketNumber(1);
 //alert(i);
 }
