@@ -85,4 +85,25 @@ ON DELETE SET NULL
      ON DELETE CASCADE
  );
 
+
+
+ALTER TABLE basket 
+MODIFY COLUMN paid_at DATETIME DEFAULT NULL;
+
+
+
+CREATE TABLE cart_items (
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  basket_id INT(11),
+  product_id INT(11),
+  qauntity FLOAT,
+  FOREIGN KEY (basket_id)
+    REFERENCES basket(id)
+    ON DELETE CASCADE,
+    FOREIGN KEY (product_id)
+    REFERENCES product(id)
+    ON DELETE CASCADE
+);
+
+
 //etriz.ru

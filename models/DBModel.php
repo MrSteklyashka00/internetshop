@@ -82,5 +82,10 @@ public function delete(){
    Db::getInstance()->execute($sql, ['id'=>$this->id]);
 }
 
-
+ public static function commonQuery($sql,$pars=[],$isClass=false,$fetch=false){
+ if (isClass)
+    return Db::getInstance()->commonQuery($sql,$pars,static::class,$fetch);
+   else
+  return Db::getInstance()->commonQuery($sql,$pars,null,$fetch);
+ }
 }

@@ -75,4 +75,17 @@ class Db{
     public function lastInsertId(){
         return $this->connection->lastInsertId();
     }
+    public function commonQuery($sql,$params=[],$class=null,$fetch=false){
+        $STH=$this->query($sql,$params); 
+        if($class)
+        $STH->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+      if($fetch)
+        return $STH->fetchALL();
+    else
+        return $STH->rowCount();
+    }
 }
+
+
+
+
