@@ -7,8 +7,8 @@ abstract class Model implements IModel{
     protected $props=[];
 
     public function __set($name, $value){
-        if(array_key_exists($name,$this->property_exists)){
-            $this->$name=$value;
+           $this->$name=$value;
+        if(array_key_exists($name,$this->props)){
             $this->props[$name]=true;
         }
     }

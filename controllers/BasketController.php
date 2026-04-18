@@ -16,9 +16,9 @@ class BasketController extends Controller{
         if(Session::getRole()& CAN_BUY){
             $basket_id=0;
              $sql="SELECT id FROM basket WHERE user_id=:user_id AND status=0 LIMIT 1";
-             $BASKET=Basket::commonQuery($sql,['user_id'=>Session::getUserId()],false,true);
+             $baskets=Basket::commonQuery($sql,['user_id'=>Session::getUserId()],false,true);
             if($baskets)
-                $basket_id=baskets[0]['id'];
+                $basket_id=$baskets[0]['id'];
             else{
                 $basket=new Basket();
                 $basket->save();
@@ -33,12 +33,12 @@ class BasketController extends Controller{
                 return;
             }
             $sql="SELECT * FROM cart_items
-            WHERE basket_id=:basket_id AND product_id: product id";
+            WHERE basket_id=:basket_id AND product_id=:product_id";
             if($p['product_id']){
                 $item=Items::commonQuery($sql,['basket_id'=>$basket_id,'product_id'=>$p['product_id']],true,true);
                 if($item){
                     $item[0]->quantity++;
-                    $item[0]-save();
+                    $item[0]->save();
                     $response['quantity']=$item[0]->quantity;
                 }else{
                     $item=new Items($basket_id,$p['product']);
