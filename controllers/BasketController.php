@@ -37,11 +37,11 @@ class BasketController extends Controller{
             if($p['product_id']){
                 $item=Items::commonQuery($sql,['basket_id'=>$basket_id,'product_id'=>$p['product_id']],true,true);
                 if($item){
-                    $item[0]->quantity++;
+                    $item[0]->qauntity++;
                     $item[0]->save();
-                    $response['quantity']=$item[0]->quantity;
+                    $response['qauntity']=$item[0]->qauntity;
                 }else{
-                    $item=new Items($basket_id,$p['product']);
+                    $item=new Items($basket_id,$p['product_id']);
                     $item->save();
                       $response['quantity']=1;
                 }
