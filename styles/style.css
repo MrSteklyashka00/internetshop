@@ -614,3 +614,30 @@ color:#000;
     padding-top: 5px;
     width: 50%;
 }
+
+
+
+.p_busket_container{
+width: 100%;
+height: 100%;
+font-size: 20px;
+padding: 0;
+display: flex;
+justify-contenr: space-between;
+flex-wrap: nowrap;
+background-color: #fff;
+color:#000;
+}
+
+.p_busket_plus{
+ width: 25%;
+ background-color:#00ffd5
+ padding-top: 3px;
+
+}
+
+.p_busket_number{
+    text-align:center;
+    padding-top: 5px;
+    width: 50%;
+}

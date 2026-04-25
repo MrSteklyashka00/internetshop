@@ -1,10 +1,13 @@
 let products=null;
+let b_products = [];
 
 let addBusketNumber=(n)=>{
 return '<div class="in_busket_container" id="in_busket_container"><div class="in_busket_plus"id="in_busket_plus">+</div><div class="in_busket_number" id="in_busket_number">'+n+'</div><div class="in_busket_plus"id="in_busket_minus">-</div></div>'
 }
 
-
+let inBusketNumber=(n)=>{
+return '<div class="p_busket_container" id="p_busket_container"><div class="p_busket_plus"id="p_busket_plus">+</div><div class="p_busket_number" id="p_busket_number">'+n+'</div><div class="p_busket_plus"id="p_busket_minus">-</div></div>'
+}
 
 
 async function fetchPostData(url, outdata, callbackfunc){
@@ -160,12 +163,15 @@ function createCard(name,desc,price,img,id){
         newCard.childNodes[3].innerHTML=name;
         newCard.childNodes[5].innerHTML=desc;
         newCard.childNodes[7].innerHTML='<b>Цена: <b>' + price +' р.';
+        if(id in b_products)
+            newCard.childNodes[9].innerHTML=inBusketNumber(b_products[id]);
         newCard.childNodes[9].id='button'+id;
         newCard.childNodes[9].onclick=function buttonckick(){
         addToBusket(id);
         }
         newCard.id='card_'+id;
-        newCard.onclick=function cardClick(){
+        newCard.onclick=function cardClick(e){
+            if(e.target.className!='product_buy' && e.target.className !='p_busket_plus' && e.target.className !='p_busket_number')
             showModal(name,desc,price,img,id);
         }
 
@@ -200,6 +206,7 @@ function closeModal(){
 let showProds=(data)=>{
     if(data['status']=='OK'){
         products=data['prods'];
+        b_products=data['basket'];
         for(let d of products){
             let pImg='/img/001.jpg';
             if(d['img'])

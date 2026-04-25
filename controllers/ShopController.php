@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\engine\File;
 use app\engine\Session;
+use app\models\Basket;
 use app\models\Category;
 use app\models\Product;
 use app\models\User;
@@ -128,8 +129,16 @@ class ShopController extends Controller
    }
 
     public function actionGetProducts($p){
+        $sql="SELECT ci.product_id AS id, ci.quantity AS quantity
+        FROM basket AS b
+        JOIN cart_items AS ci ON b.id=ci.basket_id
+        WHERE b.user_id=:user_id AND b.status=0";
+        $basket_prods=Basket::commonQuery($sql,['user_id' =>Session::getUserId()],false,true);
+        $basketProds=[];
+        foreach($basket_prods as $item)
+            $basketProds[$item['id']]=$item['quantity'];
         $prods=Product::getALL('name','',false);
-        echo json_encode(['status'=>'OK','prods'=>$prods],JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); //  localhost/shop/getproducts
+        echo json_encode(['status'=>'OK','prods'=>$prods, 'basket'=>$basketProds],JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); //  localhost/shop/getproducts
     }
 
 

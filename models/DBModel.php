@@ -50,7 +50,7 @@ protected function update(){
    $params=[];
    $tableName=$this->getTableName();
    foreach($this->props as $key=>$value){
-      if($value) continue;
+      if(!$value) continue;
       $params[':'.$key]=$this->$key;
       $columns[]=$key;
 
