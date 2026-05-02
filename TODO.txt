@@ -5,3 +5,11 @@
 5. права для администраторов
 6. информацию о товаре
 7. Исправить количество добавленого товара (+-)
+
+Error: MySQL shutdown unexpectedly.
+13:02:02  [mysql] 	This may be due to a blocked port, missing dependencies, 
+13:02:02  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+13:02:02  [mysql] 	Press the Logs button to view error logs and check
+13:02:02  [mysql] 	the Windows Event Viewer for more clues
+13:02:02  [mysql] 	If you need more help, copy and post this
+13:02:02  [mysql] 	entire log window on the forums

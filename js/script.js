@@ -173,9 +173,32 @@ function createCard(name,desc,price,img,id){
         newCard.onclick=function cardClick(e){
             if(e.target.className!='product_buy' && e.target.className !='p_busket_plus' && e.target.className !='p_busket_number')
             showModal(name,desc,price,img,id);
+        else if (e.target.className=='product_buy'){
+            fetchPostData('/basket/addtobasket',{'prouct_id':id},refreshQuantity);
+        }
+        else if (e.target.className=='p_basket_plus'){
+            if(e.target.id=='p_basket_plus')
+                  fetchPostData('/basket/addtobasket',{'prouct_id':id},refreshQuantity);
+                else            
+                 fetchPostData('/basket/deletefrombasket',{'prouct_id':id},refreshQuantity);
+
+        }
         }
 
        main.append(newCard);
+}
+
+let refreshQuantity=(d)=>{
+    if(d['status']=='OK'){
+        let id=d['id'];
+        let el=document.getElementById('Button_'+id);
+        if(el && d['quantity']) {
+            el.innerHTML=inBusketNumber(d['quantity']);
+            b_products[id]= d['quantity'];
+        }
+        else el.innerHTML='Купить';
+    }
+    else alert('Ошибка при добавление в корзину');
 }
 
 function addToBusket(id){
@@ -244,5 +267,5 @@ function buy(e){
  in_busket_number.innerHTML++;
 else if(el.innerHTML =='Купить')
     el.innerHTML= addBusketNumber(1);
-//alert(i);
+//alert(id);
 }

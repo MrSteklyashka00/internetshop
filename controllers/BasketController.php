@@ -13,7 +13,7 @@ class BasketController extends Controller{
 
         ];
         if($p['product_id'])
-            $response['id']=$p['product_id']
+            $response['id']=$p['product_id'];
       if(Session::isAuth())
         if(Session::getRole()& CAN_BUY){
             $basket_id=0;
@@ -61,7 +61,7 @@ class BasketController extends Controller{
 
         ];
         if($p['product_id'])
-            $response['id']=$p['product_id']
+            $response['id']=$p['product_id'];
       if (Session::isAuth())
         if(Session::getRole()& CAN_BUY){
             $basket_id=0;
@@ -71,8 +71,21 @@ class BasketController extends Controller{
             $basket_id=$baskets[0]['id'];
              $sql="SELECT * FROM cart_items
             WHERE basket_id=:basket_id AND product_id=:product_id";
-            
+            if($p['product_id']){
+                $item=Items::commonQuery($sql,['basket_id'=>$basket_id,'product_id'=>($p['product_id'])],true,true);
+                if($item){
+                    if($item[0]->quantity>1){
+                        $item[0]->quantity--;
+                        $item[0]->save();
+                        $response['quantity']=$item[0]->quantity;
+                    }else $item[0]->delete();
             }
-                
+            }
+            }
+            $response['status']='OK';
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            return;
     }
+     echo json_encode($response, JSON_UNESCAPED_UNICODE);
+}
 }
