@@ -633,6 +633,7 @@ color:#000;
  width: 25%;
  background-color:#00ffd5
  padding-top: 3px;
+ user-select: none;
 
 }
 

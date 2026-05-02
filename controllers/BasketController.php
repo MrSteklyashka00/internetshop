@@ -12,6 +12,8 @@ class BasketController extends Controller{
         'quantity'=>0
 
         ];
+        if($p['product_id'])
+            $response['id']=$p['product_id']
       if(Session::isAuth())
         if(Session::getRole()& CAN_BUY){
             $basket_id=0;
@@ -51,5 +53,26 @@ class BasketController extends Controller{
             }
         }
          echo json_encode($response,JSON_UNESCAPED_UNICODE);
+    }
+    public function actionDeleteFromBasket($p){
+        $response =[
+        'status'=>'Error',
+        'quantity'=>0
+
+        ];
+        if($p['product_id'])
+            $response['id']=$p['product_id']
+      if (Session::isAuth())
+        if(Session::getRole()& CAN_BUY){
+            $basket_id=0;
+             $sql="SELECT id FROM basket WHERE user_id=:user_id AND status=0 LIMIT 1";
+             $baskets=Basket::commonQuery($sql,['user_id'=>Session::getUserId()],false,true);
+            if($baskets){
+            $basket_id=$baskets[0]['id'];
+             $sql="SELECT * FROM cart_items
+            WHERE basket_id=:basket_id AND product_id=:product_id";
+            
+            }
+                
     }
 }

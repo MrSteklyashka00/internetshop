@@ -13,7 +13,7 @@ class Items extends DBModel{
     'quantity'=>false
    ];
 
-   public function __construct($b_id=0, $p_id=0, $q=0)
+   public function __construct($b_id=0, $p_id=0, $q=1)
    {
        $this->basket_id=$b_id;
        $this->product_id=$p_id;
