@@ -165,7 +165,7 @@ function createCard(name,desc,price,img,id){
         newCard.childNodes[7].innerHTML='<b>Цена: <b>' + price +' р.';
         if(id in b_products)
             newCard.childNodes[9].innerHTML=inBusketNumber(b_products[id]);
-        newCard.childNodes[9].id='button'+id;
+        newCard.childNodes[9].id='button_'+id;
         newCard.childNodes[9].onclick=function buttonckick(){
         addToBusket(id);
         }
@@ -174,13 +174,13 @@ function createCard(name,desc,price,img,id){
             if(e.target.className!='product_buy' && e.target.className !='p_busket_plus' && e.target.className !='p_busket_number')
             showModal(name,desc,price,img,id);
         else if (e.target.className=='product_buy'){
-            fetchPostData('/basket/addtobasket',{'prouct_id':id},refreshQuantity);
+            fetchPostData('/basket/addtobasket',{'product_id':id},refreshQuantity);
         }
         else if (e.target.className=='p_basket_plus'){
             if(e.target.id=='p_basket_plus')
-                  fetchPostData('/basket/addtobasket',{'prouct_id':id},refreshQuantity);
+                  fetchPostData('/basket/addtobasket',{'product_id':id},refreshQuantity);
                 else            
-                 fetchPostData('/basket/deletefrombasket',{'prouct_id':id},refreshQuantity);
+                 fetchPostData('/basket/deletefrombasket',{'product_id':id},refreshQuantity);
 
         }
         }
@@ -191,7 +191,7 @@ function createCard(name,desc,price,img,id){
 let refreshQuantity=(d)=>{
     if(d['status']=='OK'){
         let id=d['id'];
-        let el=document.getElementById('Button_'+id);
+        let el=document.getElementById('button_'+id);
         if(el && d['quantity']) {
             el.innerHTML=inBusketNumber(d['quantity']);
             b_products[id]= d['quantity'];
