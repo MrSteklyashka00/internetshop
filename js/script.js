@@ -6,7 +6,7 @@ return '<div class="in_basket_container" id="in_basket_container"><div class="in
 }
 
 let inbasketNumber=(n)=>{
-return '<div class="p_basket_container" id="p_basket_container"><div class="p_basket_plus"id="p_basket_plus">+</div><div class="p_basket_number" id="p_basket_number">'+n+'</div><div class="p_basket_plus"id="p_basket_minus">-</div></div>'
+return '<div class="p_basket_container" id="p_basket_container"><div class="p_basket_plus"id="p_basket_plus">	&#9668;</div><div class="p_basket_number" id="p_basket_number">'+n+'</div><div class="p_basket_plus"id="p_basket_minus">&#9658;</div></div>'
 }
 
 
@@ -278,13 +278,18 @@ else if(el.innerHTML =='Купить')
 
 let refreshModal=(d)=>{
     if(d['status']=='OK'){
-        let id=['id'];
+        let id=d['id'];
         let el=document.getElementById('modal_buy_'+id);
+        let el2=document.getElementById('button_'+id);
         if(el && d['quantity']){
             el.innerHTML=addbasketNumber(d['quantity']);
+            el2.innerHTML=inbasketNumber(d['quantity']);
             b_products[id]=d['quantity'];
         }
-        else el.innerHTML='Купить';
+        else {
+               el.innerHTML= 'Купить';
+               el2.innerHTML= 'ОПЛАТИТЬ';
+        } 
     }
     else alert('Ошибка при добавление в корзину');
 }
