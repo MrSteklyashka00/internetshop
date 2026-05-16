@@ -265,7 +265,7 @@ modal_buy.addEventListener('click',buy);
 function buy(e){
     let el=e.target;
    let el_id=el.id
-   let id=e.curirentTarget.id.split('_')[2];
+   let id=e.currentTarget.id.split('_')[2];
    if(el_id=='in_basket_minus'){
      fetchPostData('/basket/deletefrombasket',{'product_id':id},refreshModal);
    }else 
