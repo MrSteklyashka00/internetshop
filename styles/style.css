@@ -590,26 +590,26 @@ width: 300px;
 }
 
 
-.in_busket_container{
+.in_basket_container{
 width: 100%;
 height: 100%;
 font-size: 36px;
 padding: 0;
 display: flex;
-justify-contenr: space-between;
+justify-content: space-between;
 flex-wrap: nowrap;
 background-color: #fff;
 color:#000;
 }
 
-.in_busket_plus{
+.in_basket_plus{
  width: 25%;
- background-color:#00ffd5
+ background-color:#00ffd5;
  padding-top: 3px;
 
 }
 
-.in_busket_number{
+.in_basket_number{
     text-align:center;
     padding-top: 5px;
     width: 50%;
@@ -617,27 +617,26 @@ color:#000;
 
 
 
-.p_busket_container{
+.p_basket_container{
 width: 100%;
 height: 100%;
 font-size: 20px;
 padding: 0;
 display: flex;
-justify-contenr: space-between;
+justify-content: space-between;
 flex-wrap: nowrap;
 background-color: #fff;
 color:#000;
 }
 
-.p_busket_plus{
+.p_basket_plus{
  width: 25%;
- background-color:#00ffd5
+ background-color:#00ffd5;
  padding-top: 3px;
  user-select: none;
-
 }
 
-.p_busket_number{
+.p_basket_number{
     text-align:center;
     padding-top: 5px;
     width: 50%;

@@ -1,12 +1,12 @@
 let products=null;
 let b_products = [];
 
-let addBusketNumber=(n)=>{
-return '<div class="in_busket_container" id="in_busket_container"><div class="in_busket_plus"id="in_busket_plus">+</div><div class="in_busket_number" id="in_busket_number">'+n+'</div><div class="in_busket_plus"id="in_busket_minus">-</div></div>'
+let addbasketNumber=(n)=>{
+return '<div class="in_basket_container" id="in_basket_container"><div class="in_basket_plus"id="in_basket_plus">+</div><div class="in_basket_number" id="in_basket_number">'+n+'</div><div class="in_basket_plus"id="in_basket_minus">-</div></div>'
 }
 
-let inBusketNumber=(n)=>{
-return '<div class="p_busket_container" id="p_busket_container"><div class="p_busket_plus"id="p_busket_plus">+</div><div class="p_busket_number" id="p_busket_number">'+n+'</div><div class="p_busket_plus"id="p_busket_minus">-</div></div>'
+let inbasketNumber=(n)=>{
+return '<div class="p_basket_container" id="p_basket_container"><div class="p_basket_plus"id="p_basket_plus">+</div><div class="p_basket_number" id="p_basket_number">'+n+'</div><div class="p_basket_plus"id="p_basket_minus">-</div></div>'
 }
 
 
@@ -164,14 +164,14 @@ function createCard(name,desc,price,img,id){
         newCard.childNodes[5].innerHTML=desc;
         newCard.childNodes[7].innerHTML='<b>Цена: <b>' + price +' р.';
         if(id in b_products)
-            newCard.childNodes[9].innerHTML=inBusketNumber(b_products[id]);
+            newCard.childNodes[9].innerHTML=inbasketNumber(b_products[id]);
         newCard.childNodes[9].id='button_'+id;
         newCard.childNodes[9].onclick=function buttonckick(){
-        addToBusket(id);
+        addTobasket(id);
         }
         newCard.id='card_'+id;
         newCard.onclick=function cardClick(e){
-            if(e.target.className!='product_buy' && e.target.className !='p_busket_plus' && e.target.className !='p_busket_number')
+            if(e.target.className!='product_buy' && e.target.className !='p_basket_plus' && e.target.className !='p_basket_number')
             showModal(name,desc,price,img,id);
         else if (e.target.className=='product_buy'){
             fetchPostData('/basket/addtobasket',{'product_id':id},refreshQuantity);
@@ -193,7 +193,7 @@ let refreshQuantity=(d)=>{
         let id=d['id'];
         let el=document.getElementById('button_'+id);
         if(el && d['quantity']) {
-            el.innerHTML=inBusketNumber(d['quantity']);
+            el.innerHTML=inbasketNumber(d['quantity']);
             b_products[id]= d['quantity'];
         }
         else el.innerHTML='Купить';
@@ -201,12 +201,12 @@ let refreshQuantity=(d)=>{
     else alert('Ошибка при добавление в корзину');
 }
 
-function addToBusket(id){
+function addTobasket(id){
     print(id);
     let mb = document.getElementsByClassName('modal_buy');
     if (mb) {
         mb=mb[0];
-        mb.innerHTML=addBusketNumber(1);
+        mb.innerHTML=addbasketNumber(1);
     }
 }
 
@@ -218,7 +218,15 @@ function showModal(name='',desc='',price='',img='',id = null){
     modal_price.innerHTML='Цена: <b>' + price + ' р. </b>';
     let modalBuy = document.getElementsByClassName('modal_buy');
     modalBuy=(modalBuy)? modalBuy[0]:null;
-    if(modal_buy) modalBuy.id='modal_buy_' + id;
+    if(modalBuy){
+           modalBuy.id='modal_buy_' + id;
+           if(id in b_products){
+            if(b_products[id])
+                modalBuy.innerHTML=addbasketNumber(b_products[id]);
+            else modalBuy.innerHTML='Купить';
+           }
+           else modalBuy.innerHTML='Купить';
+    } 
 }
 
 function closeModal(){
@@ -257,15 +265,26 @@ modal_buy.addEventListener('click',buy);
 function buy(e){
     let el=e.target;
    let el_id=el.id
-   let id=el_id.split('_')[2];
-   if(el_id=='in_busket_minus'){
-    in_busket_number.innerHTML--;
-    if(in_busket_number.innerHTML==0)
-        document.getElementsByClassName('modal_buy')[0].innerHTML='Купить';
+   let id=e.curirentTarget.id.split('_')[2];
+   if(el_id=='in_basket_minus'){
+     fetchPostData('/basket/deletefrombasket',{'product_id':id},refreshModal);
    }else 
-   if (el_id=='in_busket_plus')
- in_busket_number.innerHTML++;
+   if (el_id=='in_basket_plus')
+    fetchPostData('/basket/addtobasket',{'product_id':id},refreshModal);
 else if(el.innerHTML =='Купить')
-    el.innerHTML= addBusketNumber(1);
+    fetchPostData('/basket/addtobasket',{'product_id':id},refreshModal);
 //alert(id);
+}
+
+let refreshModal=(d)=>{
+    if(d['status']=='OK'){
+        let id=['id'];
+        let el=document.getElementById('modal_buy_'+id);
+        if(el && d['quantity']){
+            el.innerHTML=addbasketNumber(d['quantity']);
+            b_products[id]=d['quantity'];
+        }
+        else el.innerHTML='Купить';
+    }
+    else alert('Ошибка при добавление в корзину');
 }
