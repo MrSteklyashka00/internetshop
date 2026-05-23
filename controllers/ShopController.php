@@ -14,7 +14,7 @@ class ShopController extends Controller
     public function actionIndex()
     {
         //echo 'sdfsfassdfasdsfasdf';
-        echo $this->render('main', []);
+         $this->render('main', []);
     }
     public function actionGetUsers(){
         // $user= new User('-','admin','','1999-05-24','admin','1234',-1);
@@ -25,7 +25,7 @@ class ShopController extends Controller
 
      public function actionNewCategoryForm(){
         if(Session::getRole()& CAN_EDIT_PRODUCT){
-            echo $this->render('management/newcategoryform',[]);
+             $this->render('management/newcategoryform',[]);
         }
         else header('location: /'); 
      }
@@ -35,7 +35,7 @@ class ShopController extends Controller
         $error=null;
         if($p['name']===''){
             $error='Название категории не указано!';
-            echo $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
+             $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
         } else{
             $file = new File($_FILES['image']);
             if($file->hasFile()){
@@ -45,7 +45,7 @@ class ShopController extends Controller
                     if(!$file->isImage())
                         $error='Файл не является изображением';
                 if($error)    
-            echo $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
+            $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
         else{
             $upDir='/public/images/';
             $extension =  pathinfo($file->getFileName(),PATHINFO_EXTENSION);
@@ -57,7 +57,7 @@ class ShopController extends Controller
             }
             else{
                 $error='Ошибка при сохранение файла';
-            echo $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
+             $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
             }
 
         }        
@@ -74,7 +74,7 @@ class ShopController extends Controller
    {
     if(Session::getRole() & CAN_EDIT_PRODUCT){
         $cats=Category::getAll('name','',false);
-        echo $this->render('management/newproductform',['cats'=>$cats]);
+         $this->render('management/newproductform',['cats'=>$cats]);
     } else header('location: /');
    }
 
@@ -93,7 +93,7 @@ class ShopController extends Controller
         $cats=Category::getALL('name','',false);
         if($p['name']===''|| !$this->strToNumber($p['price'])) {
             $error='Не указано название или цена';
-            echo $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
+             $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
         } else{
             $file = new File($_FILES['image']);
             if($file->hasFile()){
@@ -103,7 +103,7 @@ class ShopController extends Controller
                     if(!$file->isImage())
                         $error='Файл не является изображением';
                 if($error)    
-             echo $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
+             $this->render('management/newproductform',['p'=>$p,'error'=>$error, 'cats'=>$cats]);
         else{
             $upDir='/public/images/';
             $extension =  pathinfo($file->getFileName(),PATHINFO_EXTENSION);
@@ -115,7 +115,7 @@ class ShopController extends Controller
             }
             else{
                 $error='Ошибка при сохранение файла';
-            echo $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
+             $this->render('management/newcategoryform',['p'=>$p,'error'=>$error]);
             }
 
         }        
