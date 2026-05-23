@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\engine\Session;
 use app\models\Basket;
 use app\models\Items;
+use app\models\Product;
 
 class BasketController extends Controller{
     public function actionAddToBasket($p){
@@ -88,4 +89,19 @@ class BasketController extends Controller{
     }
      echo json_encode($response, JSON_UNESCAPED_UNICODE);
 }
+
+    public function actionShowBasket(){
+        if(Session::isAuth())
+            if(Session::getRole() & CAN_BUY){
+                $sql="SELECT p.*,
+                    ci.quantity,
+                    p.price*ci.quantity AS total
+                    FROM basket AS b
+                    JOIN cart_items AS ci ON b.id=ci.basket_id
+                    JOIN product AS p ON p.id=ci.product_id
+                    WHERE b.user_id=:user_id AND b.status=0";
+                $prods=Product::commonQuery($sql,['user_id'=>Session::getUserId()],false,true);
+                $this->render('user/basket',['prods'=>$prods]);
+            }
+    }
 }

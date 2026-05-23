@@ -642,3 +642,25 @@ color:#000;
     padding-top: 2px;
     width: 50%;
 }
+
+.basket_type_container{
+    width:90%;
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.basket_type{
+  height: 1.25em;
+  width: 200px;
+border: 1px solid #000;
+background:#cecece;
+text-align: center;
+}
+
+.basket_selected{
+    background:#575757;
+     border: 1px solid #000;      
+
+}
