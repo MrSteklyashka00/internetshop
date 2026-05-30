@@ -12,9 +12,11 @@
     </div>
     <div class="basket_card_info_wrapper">
         <div class="basket_card_title">Картошка</div>
-        <div class="basket_card_tools_wrapper"></div>
-        <div class="basket_total_price">67&nbsp;067 ₽</div>
+        <div class="basket_card_tools_wrapper"><div class="basket_total_price">67&nbsp;067 ₽</div>
         <div class="basket_container" id="basket_container"><div class="basket_plus"id="basket_plus">+</div><div class="basket_number" id="basket_number">1</div><div class="basket_plus"id="basket_minus">-</div></div>
+
+    </div>
+    <div class="basket_delete_button"></div>
     </div>
 </div>
 

@@ -736,9 +736,24 @@ text-align: center;
     justify-content: space-between;
 }
 
-.ibasket_plus{
+.basket_plus{
     width:1.2em;
     height: 1.2em;
     font-size: 28px;
-    background-color: #f5a5a5;
+    background-color: #3ec8ff;
+    text-align:center;
+    font-weight:800;
+}
+
+.basket_number{
+    font-size: 28px;
+    background-color: #3ec8ff;
+    text-align:center;
+    flex-grow: 1;
+}
+
+.basket_delete_button{
+    width:1.2em;
+    height: 1.2em;
+    font-size: 28px;
 }
