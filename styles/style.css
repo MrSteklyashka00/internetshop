@@ -664,3 +664,81 @@ text-align: center;
      border: 1px solid #000;      
 
 }
+
+.basket_cards_container{
+    width:90%;
+    margin:10px auto;
+
+}
+
+.basket_card_item{
+    width: 95%;
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: linear-gradient(#00ffd5,#004);
+    border-radius: 10px;
+
+}
+.basket_card_item:hover{
+   box-shadow:5px 5px 5px rgb(212, 212, 194);
+   background: linear-gradient(#a5f5e8,rgb(73, 73, 233));
+}
+
+.basket_card_image_wraper{
+    width: 100px;
+    height: 100px;
+}
+
+.basket_card_image{
+      width: 80px;
+    height: 80px;
+    margin: 10px;
+    background: url(../img/Король_и_Шут_\(логотип\).jpg) center / contain no-repeat;
+}
+
+.basket_card_info_wrapper{
+    flex-grow:1;
+}
+
+.basket_card_title{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 5px 10px 10px 10px;
+    overflow-x: hidden;
+    color:#004
+
+}
+
+.basket_card_tools_wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.basket_total_price{
+    width: 200px;
+    color:rgb(0, 35, 51);
+    font-size: 28px;
+    border-radius: 5px;
+    background-color:rgb(14, 114, 121);
+    text-align: center;
+    margin-left: 10px;
+    height: 1.2em;
+
+}
+
+.basket_container{
+    width: 200px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.ibasket_plus{
+    width:1.2em;
+    height: 1.2em;
+    font-size: 28px;
+    background-color: #f5a5a5;
+}
